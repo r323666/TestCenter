@@ -6,9 +6,6 @@ import org.richfaces.model.UploadedFile;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
@@ -27,7 +24,6 @@ public class ZeroClickFeedAction {
     private UploadedFile file = null;
 
     /**
-     *
      * @return
      */
     public ZeroClickBean getZeroClickBean() {
@@ -35,7 +31,6 @@ public class ZeroClickFeedAction {
     }
 
     /**
-     *
      * @param zeroClickBean
      */
     public void setZeroClickBean(ZeroClickBean zeroClickBean) {
@@ -43,7 +38,6 @@ public class ZeroClickFeedAction {
     }
 
     /**
-     *
      * @param event
      * @throws Exception
      */
@@ -51,43 +45,35 @@ public class ZeroClickFeedAction {
 
         file = event.getUploadedFile();
 
-        try {
+        String fileContent = new String(file.getData());
 
-            DataInputStream in = new DataInputStream(file.getInputStream());
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        StringTokenizer tokenizer = new StringTokenizer(fileContent, ",");
 
-            StringTokenizer tokenizer = null;
-
-            String strLine;
-            while ((strLine = br.readLine()) != null) {
-                tokenizer = new StringTokenizer(strLine,",");
-                while(tokenizer.hasMoreElements()){
-                    this.zeroClickBean.getQueriesList().add(tokenizer.nextToken());
-                }
-            }
-            in.close();
-            br.close();
-            for(String str : this.zeroClickBean.getQueriesList()){
-                if(logger.isDebugEnabled()){
-                    logger.debug(str);
-                }
-            }
-
-            //sending request to Adserver Client
-            AdserverClient.sendRequest(this.zeroClickBean.getQueriesList());
-
-        } catch (Exception ex) {
-            logger.info(ex.getMessage());
+        while (tokenizer.hasMoreElements()) {
+            this.zeroClickBean.getQueriesList().add(tokenizer.nextToken());
         }
+
+        if (logger.isDebugEnabled()) {
+            for (String str : this.zeroClickBean.getQueriesList()) {
+                logger.debug(str);
+            }
+        }
+
+        //sending request to Adserver Client
+        AdserverClient.sendRequest(this.zeroClickBean.getQueriesList());
+
     }
 
     /**
-     *
      * @return
      */
     public String submit() {
-        System.out.println(zeroClickBean.toString());
-        System.out.println(file.getData());
+        logger.info(zeroClickBean.toString());
+        if (logger.isDebugEnabled()) {
+            for (String str : zeroClickBean.getListFromString()) {
+                logger.info(str);
+            }
+        }
         return "success";
     }
 }
