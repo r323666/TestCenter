@@ -56,7 +56,7 @@ public class ZeroClickBean implements Serializable {
     }
 
     public String getQueries() {
-        return queriesList.toString();
+        return queriesList.isEmpty()?"":queriesList.toString();
     }
 
     public void setQueries(String queries) {
