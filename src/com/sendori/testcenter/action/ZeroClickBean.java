@@ -3,6 +3,7 @@ package com.sendori.testcenter.action;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,6 +18,7 @@ public class ZeroClickBean implements Serializable {
     private double rp;
     private double rpm;
     private double rd;
+    private String queries;
     private List<String> queriesList = new ArrayList<String>();
 
     public ZeroClickBean() {
@@ -56,11 +58,11 @@ public class ZeroClickBean implements Serializable {
     }
 
     public String getQueries() {
-        return queriesList.isEmpty()?"":queriesList.toString();
+        return queries;
     }
 
     public void setQueries(String queries) {
-        queriesList.add(queries);
+        this.queries = queries;
     }
 
     public List<String> getQueriesList() {
@@ -78,7 +80,21 @@ public class ZeroClickBean implements Serializable {
                 ", rp=" + rp +
                 ", rpm=" + rpm +
                 ", rd=" + rd +
-                ", Queries='" + queriesList.toArray() + '\'' +
+                ", queries='" + queries + '\'' +
+                ", queriesList=" + queriesList +
                 '}';
+    }
+
+    /**
+     *
+     *@return
+     */
+    public List<String> getListFromString(){
+        StringTokenizer tokenizer =  new StringTokenizer(this.queries,",");
+        List<String> tempList = new ArrayList<String>();
+        while(tokenizer.hasMoreElements()){
+            tempList.add(tokenizer.nextToken());
+        }
+        return tempList;
     }
 }

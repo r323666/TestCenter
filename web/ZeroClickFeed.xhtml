@@ -72,7 +72,9 @@
                             <h:outputLabel style="font-weight: lighter;width:30% " value="(1,per line,max 1,000)"/>
                         </td>
                         <td >
-                            <h:inputTextarea id="Id" value="#{zeroClick.zeroClickBean.queries}" rows="6"/>
+                            <h:inputTextarea id="queries" value="#{zeroClick.zeroClickBean.queries}" rows="6">
+
+                            </h:inputTextarea>
                         </td>
                     </tr>
                     <tr>
@@ -90,7 +92,8 @@
                                              noDuplicate="true"
                                              acceptedTypes="pdf,xls,csv"
                                              ontyperejected="alert('Only PDF,CSV files are accepted');"
-                                             maxFilesQuantity="1" listHeight="10%" >
+                                             maxFilesQuantity="1" listHeight="10%"
+                                             addLabel="Upload CSV File"  >
 
                             </rich:fileUpload>
                         </td>
