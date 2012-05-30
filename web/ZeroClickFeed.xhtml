@@ -1,8 +1,6 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:a4j="http://richfaces.org/a4j"
                 xmlns:rich="http://richfaces.org/rich"
                 template="/Template/template.xhtml">
     <ui:define name="pageTitle">Test Center</ui:define>
@@ -18,15 +16,16 @@
 
             <div class="publisher_container">
 
-                <br />
-                 <div class="section" style="width:685px">
-                      <h:outputLabel value="Feed Settings"/>
-                 </div>
-                 <br/>
+                <br/>
+
+                <div class="section" style="width:685px">
+                    <h:outputLabel value="Feed Settings"/>
+                </div>
+                <br/>
                 <table border="0" width="100%">
                     <tr>
                         <td class="optional_field_medium">
-                            <h:outputLabel value="Publisher APIKEY"  />
+                            <h:outputLabel value="Publisher APIKEY"/>
                         </td>
                         <td>
                             <h:inputText id="Name" value="#{zeroClick.zeroClickBean.pubAPIKey}"/>
@@ -41,39 +40,39 @@
                         </td>
                     </tr>
                     <tr>
-                       <td class="optional_field_medium">
-                          <h:outputLabel value="rpm"/>
+                        <td class="optional_field_medium">
+                            <h:outputLabel value="rpm"/>
                         </td>
                         <td>
                             <h:inputText id="rpm" value="#{zeroClick.zeroClickBean.rpm}"/>
                         </td>
-                     </tr>
-                     <tr>
-                         <td  class="optional_field_medium">
-                             <h:outputLabel value="rd"/>
-                         </td>
-                          <td>
+                    </tr>
+                    <tr>
+                        <td class="optional_field_medium">
+                            <h:outputLabel value="rd"/>
+                        </td>
+                        <td>
                             <h:inputText id="rd" value="#{zeroClick.zeroClickBean.rd}"/>
-                          </td>
-                     </tr>
+                        </td>
+                    </tr>
 
                 </table>
 
-                <br />
+                <br/>
+
                 <div class="section" style="width:685px">
                     <h:outputLabel value="Queries"/>
                 </div>
 
-                <br />
+                <br/>
                 <table border="0" width="100%">
                     <tr>
                         <td class="optional_field_medium">
                             <h:outputLabel value="Enter Queries"/><br/>
                             <h:outputLabel style="font-weight: lighter;width:30% " value="(1,per line,max 1,000)"/>
                         </td>
-                        <td >
+                        <td>
                             <h:inputTextarea id="queries" value="#{zeroClick.zeroClickBean.queries}" rows="6">
-
                             </h:inputTextarea>
                         </td>
                     </tr>
@@ -81,7 +80,7 @@
                         <td></td>
                         <td align="left">
                             <p>OR</p>
-                         </td>
+                        </td>
                     </tr>
                     <tr>
                         <td class="optional_field_medium">
@@ -93,13 +92,12 @@
                                              acceptedTypes="pdf,xls,csv"
                                              ontyperejected="alert('Only PDF,CSV files are accepted');"
                                              maxFilesQuantity="1" listHeight="10%"
-                                             addLabel="Upload CSV File"  >
+                                             addLabel="Upload CSV File">
 
                             </rich:fileUpload>
                         </td>
-
                     </tr>
-                   <tr></tr>
+                    <tr></tr>
                     <tr>
                         <td></td>
                         <td align="left">
