@@ -1,0 +1,109 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                template="/Template/template.xhtml">
+    <ui:define name="pageTitle">Test Center</ui:define>
+    <ui:define name="body">
+        <h:form id="formName" prependId="false">
+
+            <div class="report_run">
+                <h1>
+                    <h:outputLabel value="ZeroClickFeed Testing Tool"/>
+                </h1>
+            </div>
+
+
+            <div class="publisher_container">
+
+                <br />
+                 <div class="section" style="width:685px">
+                      <h:outputLabel value="Feed Settings"/>
+                 </div>
+                 <br/>
+                <table border="0" width="100%">
+                    <tr>
+                        <td class="optional_field_medium">
+                            <h:outputLabel value="Publisher APIKEY"  />
+                        </td>
+                        <td>
+                            <h:inputText id="Name" value="#{zeroClick.zeroClickBean.pubAPIKey}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="optional_field_medium">
+                            <h:outputLabel value="rp"/>
+                        </td>
+                        <td>
+                            <h:inputText id="rp" value="#{zeroClick.zeroClickBean.rp}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                       <td class="optional_field_medium">
+                          <h:outputLabel value="rpm"/>
+                        </td>
+                        <td>
+                            <h:inputText id="rpm" value="#{zeroClick.zeroClickBean.rpm}"/>
+                        </td>
+                     </tr>
+                     <tr>
+                         <td  class="optional_field_medium">
+                             <h:outputLabel value="rd"/>
+                         </td>
+                          <td>
+                            <h:inputText id="rd" value="#{zeroClick.zeroClickBean.rd}"/>
+                          </td>
+                     </tr>
+
+                </table>
+
+                <br />
+                <div class="section" style="width:685px">
+                    <h:outputLabel value="Queries"/>
+                </div>
+
+                <br />
+                <table border="0" width="100%">
+                    <tr>
+                        <td class="optional_field_medium">
+                            <h:outputLabel value="Enter Queries"/><br/>
+                            <h:outputLabel style="font-weight: lighter;width:30% " value="(1,per line,max 1,000)"/>
+                        </td>
+                        <td >
+                            <h:inputTextarea id="Id" value="#{zeroClick.zeroClickBean.queries}" rows="6"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="left">
+                            <p>OR</p>
+                         </td>
+                    </tr>
+                    <tr>
+                        <td class="optional_field_medium">
+                            <h:outputLabel value="Submit csv file"/>
+                        </td>
+                        <td>
+                            <rich:fileUpload fileUploadListener="#{zeroClick.listener}"
+                                             noDuplicate="true"
+                                             acceptedTypes="pdf,xls,csv"
+                                             ontyperejected="alert('Only PDF,CSV files are accepted');"
+                                             maxFilesQuantity="1" listHeight="10%" >
+
+                            </rich:fileUpload>
+                        </td>
+
+                    </tr>
+                   <tr></tr>
+                    <tr>
+                        <td class="optional_field_medium">
+                            <h:commandButton value="Submit" action="#{zeroClick.submit}"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

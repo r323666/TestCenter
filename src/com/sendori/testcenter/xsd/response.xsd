@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:ls="urn:lookSmartResults">
+  <xs:import namespace="urn:lookSmartResults" schemaLocation="ls.xsd"/>
+  <xs:element name="RejectedAds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Ad"/>
+        <xs:element ref="DedupedAds"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Ad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="OriginalDestinationUrl"/>
+        <xs:element ref="AdType"/>
+      </xs:sequence>
+      <xs:attribute name="accountTier" use="required" type="xs:NCName"/>
+      <xs:attribute name="adId" use="required" type="xs:integer"/>
+      <xs:attribute name="adgroupId" use="required" type="xs:integer"/>
+      <xs:attribute name="advertiserId" use="required" type="xs:integer"/>
+      <xs:attribute name="campaignId" use="required" type="xs:integer"/>
+      <xs:attribute name="ctr" use="required" type="xs:decimal"/>
+      <xs:attribute name="currentScore" use="required" type="xs:decimal"/>
+      <xs:attribute name="distance" use="required" type="xs:decimal"/>
+      <xs:attribute name="grossCpc" use="required" type="xs:decimal"/>
+      <xs:attribute name="hasCtr" use="required" type="xs:boolean"/>
+      <xs:attribute name="hasPacingRank" use="required" type="xs:boolean"/>
+      <xs:attribute name="highThreshold" use="required" type="xs:decimal"/>
+      <xs:attribute name="keywordId" use="required" type="xs:integer"/>
+      <xs:attribute name="lowThreshold" use="required" type="xs:decimal"/>
+      <xs:attribute name="matchType" use="required" type="xs:NCName"/>
+      <xs:attribute name="netCpc" use="required" type="xs:decimal"/>
+      <xs:attribute name="newPacingScore" use="required" type="xs:decimal"/>
+      <xs:attribute name="normalizedKwText" use="required" type="xs:NCName"/>
+      <xs:attribute name="originalCpc" use="required" type="xs:decimal"/>
+      <xs:attribute name="pacingRank" use="required"/>
+      <xs:attribute name="rank" use="required" type="xs:integer"/>
+      <xs:attribute name="reason" use="required"/>
+      <xs:attribute name="targetScore" use="required" type="xs:decimal"/>
+      <xs:attribute name="totalClicks" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DedupedAds">
+    <xs:complexType>
+      <xs:attribute name="value" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExpandedMatchInfo">
+    <xs:complexType>
+      <xs:attribute name="adMatchTime" use="required" type="xs:integer"/>
+      <xs:attribute name="adRetrieveTime" use="required" type="xs:integer"/>
+      <xs:attribute name="filterAdgroupTime" use="required" type="xs:integer"/>
+      <xs:attribute name="filterRPTime" use="required" type="xs:integer"/>
+      <xs:attribute name="querySpansWithExactOrBroadMatch" use="required"/>
+      <xs:attribute name="querySpansWithExpandMatch" use="required"/>
+      <xs:attribute name="serviceTime" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CategoryMatchInfo">
+    <xs:complexType>
+      <xs:attribute name="adMatchTime" use="required" type="xs:integer"/>
+      <xs:attribute name="adRetrieveTime" use="required" type="xs:integer"/>
+      <xs:attribute name="category" use="required"/>
+      <xs:attribute name="filterTime" use="required" type="xs:integer"/>
+      <xs:attribute name="query" use="required" type="xs:NCName"/>
+      <xs:attribute name="serviceTime" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RejectedAdGroups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="AdGroup"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdGroup">
+    <xs:complexType>
+      <xs:attribute name="AdGroupId" use="required" type="xs:integer"/>
+      <xs:attribute name="Reason" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RejectedCampaigns">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Campaign"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Campaign">
+    <xs:complexType>
+      <xs:attribute name="CampaignId" use="required" type="xs:integer"/>
+      <xs:attribute name="Reason" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Debug">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Build"/>
+        <xs:element ref="HostInfo"/>
+        <xs:element ref="RankModel"/>
+        <xs:element ref="FeedAndSubPublisherInformation"/>
+        <xs:element ref="BackfillIndexData"/>
+        <xs:element ref="DirectAdService"/>
+        <xs:element ref="Backfills"/>
+        <xs:element ref="RequestHeaders"/>
+        <xs:element ref="ApplicationResponseTime"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Build">
+    <xs:complexType>
+      <xs:attribute name="revision" use="required" type="xs:NCName"/>
+      <xs:attribute name="time" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HostInfo">
+    <xs:complexType>
+      <xs:attribute name="Hostname" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RankModel">
+    <xs:complexType>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FeedAndSubPublisherInformation">
+    <xs:complexType>
+      <xs:attribute name="feedClickScore" use="required" type="xs:decimal"/>
+      <xs:attribute name="feedId" use="required" type="xs:integer"/>
+      <xs:attribute name="feedIsPayForClick" use="required" type="xs:boolean"/>
+      <xs:attribute name="feedIsRON" use="required" type="xs:boolean"/>
+      <xs:attribute name="feedMatchType" use="required" type="xs:NCName"/>
+      <xs:attribute name="feedRevShare" use="required" type="xs:decimal"/>
+      <xs:attribute name="feedTokenSensitivity" use="required" type="xs:integer"/>
+      <xs:attribute name="feedproductIDs" use="required"/>
+      <xs:attribute name="id" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BackfillIndexData">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="DirectAdService">
+    <xs:complexType>
+      <xs:attribute name="DirectAdMatchesFilteredCount" use="required" type="xs:integer"/>
+      <xs:attribute name="DirectAdMatchesInitialcount" use="required" type="xs:integer"/>
+      <xs:attribute name="DirectAdMatchesRemovedbyNegative" use="required" type="xs:integer"/>
+      <xs:attribute name="DirectAdNegativeMatchcount" use="required" type="xs:integer"/>
+      <xs:attribute name="FinalAdCount" use="required" type="xs:integer"/>
+      <xs:attribute name="FloorPrice" use="required" type="xs:decimal"/>
+      <xs:attribute name="InitialAdCount" use="required" type="xs:integer"/>
+      <xs:attribute name="NormalizedQueryTerm" use="required" type="xs:NCName"/>
+      <xs:attribute name="RONAdGroupCount" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Backfills">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="RequestHeaders">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Header"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Header">
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="value" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResponseTimeDebug">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TimeDistribution"/>
+        <xs:element ref="PhaseDistribution"/>
+        <xs:element ref="BackfillDistributionTime"/>
+        <xs:element ref="DirectAdDistributionTime"/>
+        <xs:element ref="RunofNetworkDistributionTime"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TimeDistribution">
+    <xs:complexType>
+      <xs:attribute name="Phase" use="required" type="xs:integer"/>
+      <xs:attribute name="Renderer" use="required" type="xs:integer"/>
+      <xs:attribute name="Transformer" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PhaseDistribution">
+    <xs:complexType>
+      <xs:attribute name="AdRetrievalTime" use="required" type="xs:integer"/>
+      <xs:attribute name="Auction" use="required" type="xs:integer"/>
+      <xs:attribute name="BudgetCheck" use="required" type="xs:integer"/>
+      <xs:attribute name="ClickTokenCreation" use="required" type="xs:integer"/>
+      <xs:attribute name="Dedupe" use="required" type="xs:integer"/>
+      <xs:attribute name="ImpressionLogging" use="required" type="xs:integer"/>
+      <xs:attribute name="Qualification" use="required" type="xs:integer"/>
+      <xs:attribute name="SelectionSort" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BackfillDistributionTime">
+    <xs:complexType>
+      <xs:attribute name="BackfillCollectorTime" use="required" type="xs:integer"/>
+      <xs:attribute name="BackfillCoordinateTime" use="required" type="xs:integer"/>
+      <xs:attribute name="BackfillExecutorTime" use="required" type="xs:integer"/>
+      <xs:attribute name="BackfillProducer" use="required" type="xs:integer"/>
+      <xs:attribute name="BackfillService" use="required" type="xs:integer"/>
+      <xs:attribute name="Number" use="required" type="xs:integer"/>
+      <xs:attribute name="PostBackfillFiltering" use="required" type="xs:integer"/>
+      <xs:attribute name="PreBackfillFitering" use="required" type="xs:integer"/>
+      <xs:attribute name="Total" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DirectAdDistributionTime">
+    <xs:complexType>
+      <xs:attribute name="DirectService" use="required" type="xs:integer"/>
+      <xs:attribute name="GenerateQuerySpansTime" use="required" type="xs:integer"/>
+      <xs:attribute name="HBaseAdRetrievalTime" use="required" type="xs:integer"/>
+      <xs:attribute name="MemcacheAdRetrievalTime" use="required" type="xs:integer"/>
+      <xs:attribute name="NormalizationTime" use="required" type="xs:integer"/>
+      <xs:attribute name="keywordRetrievalTime" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RunofNetworkDistributionTime">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="LookSmart"/>
+        <xs:element ref="ApplicationResponseTime"/>
+      </xs:sequence>
+      <xs:attribute name="RunofNetworkServiceTime" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LookSmart">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="OriginalDestinationUrl" type="xs:string"/>
+  <xs:element name="AdType" type="xs:NCName"/>
+  <xs:element name="ApplicationResponseTime">
+    <xs:complexType>
+      <xs:attribute name="value" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

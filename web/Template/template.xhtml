@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:view>
+<h:head>
+    <title>
+        <ui:insert name="pageTitle"/>
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="refresh" content="7230" />
+    <link rel="stylesheet" href="/css/tiburonNew.css" type="text/css"/>
+</h:head>
+<body>
+
+<div id="container">
+    <ui:decorate template="header.xhtml"/>
+
+    <div id="content">
+        <!-- begins #mainContent -->
+        <div id="mainContent_1col">
+            <ui:include src="JSFErrorMessages.xhtml"/>
+            <ui:insert name="body"/>
+        </div>
+        <!-- end #mainContent -->
+
+        <!-- This clearing element should immediately follow the #mainContent div in order to force the #container div to contain all child floats -->
+        <br class="clearfloat"/>
+    </div>
+</div>
+</body>
+</f:view>
+</html>

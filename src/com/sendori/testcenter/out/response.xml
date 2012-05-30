@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ls:lookSmartResults xmlns:ls="urn:lookSmartResults">
+  <ls:ssResultSet ls:firstResult="0" ls:numResults="0" ls:totalHits="0"/>
+  <RejectedAds>
+    <DedupedAds value="0"/>
+  </RejectedAds>
+  <ExpandedMatchInfo querySpansWithExactOrBroadMatch="" querySpansWithExpandMatch="" serviceTime="0" adMatchTime="0" adRetrieveTime="0" filterAdgroupTime="0" filterRPTime="0"/>
+  <CategoryMatchInfo category="" query="yahoo" serviceTime="0" adMatchTime="0" adRetrieveTime="0" filterTime="0"/>
+  <Debug>
+    <Build revision="TIB_2.0.38_TEMPEST_DEBUG" time="Wed, May 16, 2012 at 19:16:54 EDT"/>
+    <HostInfo Hostname="prodads37"/>
+    <RankModel type="null_BASED"/>
+    <FeedAndSubPublisherInformation id="1000" feedId="1000" feedMatchType="Broad" feedTokenSensitivity="0" feedIsPayForClick="true" feedIsRON="true" feedRevShare="100.0" feedClickScore="0.0" feedproductIDs="[1003, 1001]"/>
+    <DirectAdService FloorPrice="0.12" NormalizedQueryTerm="yahoo" DirectAdMatchesInitialcount="0" DirectAdNegativeMatchcount="0" DirectAdMatchesRemovedbyNegative="0" DirectAdMatchesFilteredCount="0" InitialAdCount="0" RONAdGroupCount="0" FinalAdCount="0"/>
+    <Backfills/>
+    <RequestHeaders>
+      <Header name="Host" value="ads.pureleads.com"/>
+      <Header name="Content-Length" value="0"/>
+      <Header name="X-Real-IP" value="206.80.1.253"/>
+      <Header name="User-Agent" value="Jakarta Commons-HttpClient/3.1"/>
+      <Header name="Connection" value="close"/>
+    </RequestHeaders>
+    <ApplicationResponseTime value="4"/>
+  </Debug>
+  <ResponseTimeDebug>
+    <TimeDistribution Transformer="0" Phase="4" Renderer="0"/>
+    <PhaseDistribution Qualification="2" AdRetrievalTime="1" Auction="0" BudgetCheck="0" Dedupe="0" SelectionSort="0" ClickTokenCreation="0" ImpressionLogging="0"/>
+    <BackfillDistributionTime PreBackfillFitering="0" BackfillService="0" BackfillExecutorTime="0" BackfillCollectorTime="0" BackfillCoordinateTime="0" BackfillProducer="0" Total="0" Number="0" PostBackfillFiltering="0"/>
+    <DirectAdDistributionTime DirectService="0" NormalizationTime="1" GenerateQuerySpansTime="0" keywordRetrievalTime="0" MemcacheAdRetrievalTime="0" HBaseAdRetrievalTime="0"/>
+    <RunofNetworkDistributionTime RunofNetworkServiceTime="0">
+      <LookSmart/>
+      <ApplicationResponseTime value="4"/>
+    </RunofNetworkDistributionTime>
+  </ResponseTimeDebug>
+</ls:lookSmartResults>
