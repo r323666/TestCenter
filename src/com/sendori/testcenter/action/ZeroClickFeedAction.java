@@ -5,7 +5,10 @@ import org.richfaces.event.FileUploadEvent;
 import org.richfaces.model.UploadedFile;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
@@ -14,7 +17,7 @@ import java.util.StringTokenizer;
  * @since JDK 1.5
  */
 @ManagedBean(name = "zeroClick")
-@SessionScoped
+@ViewScoped
 public class ZeroClickFeedAction {
 
     private static final Logger logger = Logger.getLogger(ZeroClickFeedAction.class);
@@ -45,23 +48,31 @@ public class ZeroClickFeedAction {
 
         file = event.getUploadedFile();
 
-        String fileContent = new String(file.getData());
+        try {
 
-        StringTokenizer tokenizer = new StringTokenizer(fileContent, ",");
+            DataInputStream in = new DataInputStream(file.getInputStream());
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
-        while (tokenizer.hasMoreElements()) {
-            this.zeroClickBean.getQueriesList().add(tokenizer.nextToken());
-        }
+            StringTokenizer tokenizer = null;
 
-        if (logger.isDebugEnabled()) {
-            for (String str : this.zeroClickBean.getQueriesList()) {
-                logger.debug(str);
+            String strLine;
+            while ((strLine = br.readLine()) != null) {
+                tokenizer = new StringTokenizer(strLine, ",");
+                while (tokenizer.hasMoreElements()) {
+                    this.zeroClickBean.getQueriesList().add(tokenizer.nextToken());
+                }
             }
+            in.close();
+            br.close();
+
+            if (logger.isDebugEnabled()) {
+                for (String str : this.zeroClickBean.getQueriesList()) {
+                    logger.debug(str);
+                }
+            }
+        } catch (Exception ex) {
+            logger.info(ex.getMessage());
         }
-
-        //sending request to Adserver Client
-        AdserverClient.sendRequest(this.zeroClickBean.getQueriesList());
-
     }
 
     /**
@@ -69,11 +80,15 @@ public class ZeroClickFeedAction {
      */
     public String submit() {
         logger.info(zeroClickBean.toString());
+
+        //sending request to Adserver Client
+        AdserverClient.sendRequest(this.zeroClickBean.getQueriesList());
+
         if (logger.isDebugEnabled()) {
             for (String str : zeroClickBean.getListFromString()) {
                 logger.info(str);
             }
         }
-        return "success";
+        return null;
     }
 }
