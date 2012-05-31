@@ -1,22 +1,25 @@
 <component name="libraryTable">
   <library name="Richfaces">
     <CLASSES>
-      <root url="jar://$USER_HOME$/ramki/lib/jstl-impl-1.2.jar!/" />
-      <root url="jar://$USER_HOME$/ramki/lib/jsf-impl.jar!/" />
-      <root url="jar://$USER_HOME$/ramki/lib/sac-1.3.jar!/" />
-      <root url="jar://$USER_HOME$/ramki/lib/cssparser-0.9.5.jar!/" />
-      <root url="jar://$USER_HOME$/ramki/lib/jstl-api-1.2.jar!/" />
-      <root url="jar://$USER_HOME$/ramki/lib/jsf-api.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/commons-httpclient-3.1/commons-httpclient-3.1.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/guava-r09.jar!/" />
-      <root url="jar://$USER_HOME$/repository/log4j/log4j/1.2.16/log4j-1.2.16.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/richfaces-4.2.2.Final/artifacts/framework/richfaces-core-api-4.2.2.Final.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/richfaces-4.2.2.Final/artifacts/framework/richfaces-core-impl-4.2.2.Final.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/richfaces-4.2.2.Final/artifacts/ui/richfaces-components-api-4.2.2.Final.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/richfaces-4.2.2.Final/artifacts/ui/richfaces-components-ui-4.2.2.Final.jar!/" />
       <root url="jar://$USER_HOME$/ramki/lib/commons-codec-1.3.jar!/" />
       <root url="jar://$USER_HOME$/ramki/lib/commons-logging-1.1.1.jar!/" />
       <root url="jar://$USER_HOME$/ramki/lib/commons-logging-api-1.1.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/cssparser-0.9.5.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/guava-r09.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/jsf-api.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/jsf-impl.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/jstl-api-1.2.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/jstl-impl-1.2.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/log4j-1.2.14.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/richfaces-components-api-4.2.2.Final.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/richfaces-components-ui-4.2.2.Final.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/richfaces-core-api-4.2.2.Final.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/richfaces-core-impl-4.2.2.Final.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/sac-1.3.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/httpclient-4.2.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/httpclient-cache-4.2.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/httpcore-4.2.jar!/" />
+      <root url="jar://$USER_HOME$/ramki/lib/httpmime-4.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

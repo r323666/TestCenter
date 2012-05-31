@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/Template/template.xhtml">
+    <ui:define name="pageTitle">SLang Response</ui:define>
+    <ui:define name="body">
+        <h:outputText value="Your results are available " />
+        <h:outputLink value="CSV/csvSlang.csv">here</h:outputLink>
+        <rich:dataTable id="search_results" value="#{SLang.SLangBeans}"
+                        var="searchResult"
+                        border="1" rowClasses="rich-table-row1,rich-table-row2" width="62%">
+            <rich:column sortBy="#{searchResult.brandTerm}">
+                <f:facet name="header">
+                    <h:outputText value="Brand Term"/>
+                </f:facet>
+                <h:outputText value="#{searchResult.brandTerm}" />
+            </rich:column>
+            <rich:column sortBy="#{searchResult.domain}">
+                <f:facet name="header">
+                    <h:outputText value="Response Domain"/>
+                </f:facet>
+                <h:outputText value="#{searchResult.domain}" />
+            </rich:column>
+        </rich:dataTable>
+    </ui:define>
+</ui:composition>

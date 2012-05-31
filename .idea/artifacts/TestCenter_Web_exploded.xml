@@ -2,15 +2,16 @@
   <artifact type="exploded-war" build-on-make="true" name="TestCenter:Web exploded">
     <output-path>$PROJECT_DIR$/out/exploded/TestCenterWeb</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="TestCenter/web/Web" />
       <element id="directory" name="WEB-INF">
-        <element id="directory" name="lib">
-          <element id="library" level="project" name="Richfaces" />
-        </element>
         <element id="directory" name="classes">
           <element id="module-output" name="TestCenter" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Richfaces" />
+        </element>
       </element>
+      <element id="library" level="project" name="Richfaces" />
+      <element id="javaee-facet-resources" facet="TestCenter/web/Web" />
     </root>
   </artifact>
 </component>

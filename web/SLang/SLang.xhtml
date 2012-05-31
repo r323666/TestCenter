@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="/Template/template.xhtml">
+    <ui:define name="pageTitle">SLang Testing Tool</ui:define>
+    <ui:define name="body">
+        <h:form id="formName" prependId="false">
+
+            <div class="report_run">
+                <h1>
+                    <h:outputLabel value="SLang Testing Tool"/>
+                </h1>
+            </div>
+
+
+            <div class="publisher_container">
+                <br/>
+                <table border="0" width="100%">
+                    <tr>
+                        <td class="optional_field_medium">
+                            <h:outputLabel value="Enter Queries"/><br/>
+                            <h:outputLabel style="font-weight: lighter;width:30% " value="(1,per line,max 1,000)"/>
+                        </td>
+                        <td>
+                            <h:inputTextarea id="queries" value="#{SLang.SLangBean.brandTerm}" rows="6" required="true" requiredMessage="Yes..">
+                            </h:inputTextarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td align="left">
+                            <h:commandButton value="Submit" action="#{SLang.generateResponse}"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

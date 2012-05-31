@@ -1,6 +1,9 @@
 package com.sendori.testcenter.action;
 
-import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -12,7 +15,7 @@ import java.util.StringTokenizer;
  * Time: 11:13 AM
  * To change this template use File | Settings | File Templates.
  */
-public class ZeroClickBean implements Serializable {
+public class ZeroClickBean {
 
     private String pubAPIKey;
     private double rp;
@@ -20,9 +23,16 @@ public class ZeroClickBean implements Serializable {
     private double rd;
     private String queries;
     private List<String> queriesList = new ArrayList<String>();
+    private double rpValue;
+    private String queryValue;
+
 
     public ZeroClickBean() {
 
+    }
+
+    public String submit() {
+        return "success";
     }
 
     public String getPubAPIKey() {
@@ -86,15 +96,23 @@ public class ZeroClickBean implements Serializable {
     }
 
     /**
-     *
-     *@return
+     * @return
      */
-    public List<String> getListFromString(){
-        StringTokenizer tokenizer =  new StringTokenizer(this.queries,",");
+    public List<String> getListFromString() {
+        StringTokenizer tokenizer = new StringTokenizer(this.queries, ",");
         List<String> tempList = new ArrayList<String>();
-        while(tokenizer.hasMoreElements()){
+        while (tokenizer.hasMoreElements()) {
             tempList.add(tokenizer.nextToken());
         }
         return tempList;
     }
+
+    public void CsvSubmitValidation(FacesContext facesContext, UIComponent uiComponent, Object value) throws ValidatorException {
+        String csv = (String) value;
+
+        if (queryValue.equals("") && csv.equals("")) {
+            throw new ValidatorException(new FacesMessage("Please enter the Queries or Submit the list of Queries as csv file"));
+        }
+    }
+
 }

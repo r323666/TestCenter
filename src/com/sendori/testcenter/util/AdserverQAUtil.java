@@ -1,10 +1,15 @@
 package com.sendori.testcenter.util;
 
 import com.sendori.testcenter.action.AdserverClient;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpException;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.methods.PostMethod;
+import com.sendori.testcenter.action.SLangBean;
+import com.sendori.testcenter.dto.ZeroClickFeedDTO;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 
 import javax.xml.transform.OutputKeys;
@@ -30,29 +35,30 @@ public class AdserverQAUtil {
      *
      * @return
      */
-    public static String postRequest(String request) {
+    public static String postRequest(String url) {
 
         String responseBody = null;
-
-        HttpClient httpClient = new HttpClient();
-
-        PostMethod method = new PostMethod();
+        HttpUriRequest getHTTPRequest = new HttpGet(url);
 
         try {
 
-            method.setPath(request);
-            logger.info("Request URL:" + request);
+            DefaultHttpClient client = new DefaultHttpClient();
+            HttpResponse response = client.execute(getHTTPRequest);
+
+            HttpEntity entity = response.getEntity();
+
+            logger.info("Request URL:" + url);
 
             // Execute the method.
-            int statusCode = httpClient.executeMethod(method);
+            int statusCode = response.getStatusLine().getStatusCode();
 
             logger.info("Status Code" + statusCode);
 
             if (statusCode != HttpStatus.SC_OK) {
-                logger.info("Method failed: " + method.getStatusLine());
+                logger.info("Method failed: " + response.getStatusLine());
             }
 
-            responseBody = inputStreamToString(method.getResponseBodyAsStream());
+            responseBody = EntityUtils.toString(entity);
 
             responseBody = prettyFormat(responseBody, 2);
 
@@ -60,16 +66,13 @@ public class AdserverQAUtil {
                 logger.debug("Response XML ::::::" + responseBody);
             }
 
-        } catch (HttpException e) {
+        } catch (Exception e) {
             logger.info("Fatal protocol violation: " + e.getMessage());
-            e.printStackTrace();
-        } catch (IOException e) {
-            logger.info("Fatal transport error: " + e.getMessage());
             e.printStackTrace();
         } finally {
             // Release the connection.
-            method.releaseConnection();
         }
+
         return responseBody;
     }
 
@@ -104,7 +107,7 @@ public class AdserverQAUtil {
     public static void writeToFile(String filePath, String response) {
 
         try {
-            BufferedWriter out = new BufferedWriter(new FileWriter(filePath,true));
+            BufferedWriter out = new BufferedWriter(new FileWriter(filePath, true));
 
             out.write(response);
             out.flush();
@@ -113,37 +116,6 @@ public class AdserverQAUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * This method is used to convert inputstream to String
-     *
-     * @param inputStream
-     * @return
-     */
-    public static String inputStreamToString(InputStream inputStream) {
-
-        if (inputStream != null) {
-
-            try {
-
-                //read it with BufferedReader
-                BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-
-                StringBuilder sb = new StringBuilder();
-
-                String line;
-                while ((line = br.readLine()) != null) {
-                    sb.append(line);
-                }
-
-                return sb.toString();
-
-            } catch (Exception exp) {
-                logger.info("Exception :::: " + exp.getMessage());
-            }
-        }
-        return null;
     }
 
     /**
@@ -174,7 +146,7 @@ public class AdserverQAUtil {
      * @param fileName
      * @param dtoList
      */
-    public static void writeToCSV(String fileName, List<com.sendori.testcenter.dto.ZeroClickFeedDTO> dtoList) {
+    public static void writeToCSV(String fileName, List<ZeroClickFeedDTO> dtoList) {
 
         try {
             FileWriter writer = new FileWriter(fileName);
@@ -188,6 +160,34 @@ public class AdserverQAUtil {
                 writer.append(dto.getQueryTerm());
                 writer.append(',');
                 writer.append(dto.getUrlRedirectedTo());
+                writer.append('\n');
+            }
+
+            writer.flush();
+            writer.close();
+        } catch (Exception exp) {
+            logger.info("Exception in writeToCSV() :::: " + exp.getMessage());
+        }
+
+    }
+
+    /**
+     * @param fileName
+     * @param sLangBeans
+     */
+    public static void writeSLangResponseToCSV(String fileName, List<SLangBean> sLangBeans) {
+        try {
+            FileWriter writer = new FileWriter(fileName);
+
+            writer.append("Brand Term");
+            writer.append(',');
+            writer.append("Response Domain");
+            writer.append('\n');
+
+            for (SLangBean sLangBean : sLangBeans) {
+                writer.append(sLangBean.getBrandTerm());
+                writer.append(',');
+                writer.append(sLangBean.getDomain());
                 writer.append('\n');
             }
 

@@ -1,0 +1,31 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="/Template/template.xhtml">
+    <ui:define name="pageTitle">Test Center</ui:define>
+    <ui:define name="body">
+        <h:outputStylesheet>
+            .cols {
+                vertical-align: top;
+            }
+        </h:outputStylesheet>
+        <h:form id="form">
+            <h:panelGrid columns="2" columnClasses="cols,cols" width="500">
+                <rich:panelMenu style="width:300px" itemMode="ajax" groupMode="ajax" groupExpandedLeftIcon="triangleUp"
+                                groupCollapsedLeftIcon="triangleDown" topGroupExpandedRightIcon="chevronUp"
+                                topGroupCollapsedRightIcon="chevronDown" itemLeftIcon="disc">
+                    <rich:panelMenuGroup label="Slang Testing">
+                        <rich:panelMenuItem label="Slang Testing" name="Slang Testing" action="/SLang/SLang.xhtml" mode="server"/>
+                    </rich:panelMenuGroup>
+                    <rich:panelMenuGroup label="ZeroClick Feed Testing">
+                        <rich:panelMenuItem label="ZeroClick Feed" name="zeroClickTesting" action="/ZeroClickFeed.xhtml" mode="server" />
+                    </rich:panelMenuGroup>
+                    <rich:panelMenuGroup label="Adserver Testing">
+                        <rich:panelMenuItem label="Adserver" name="Adserver" mode="server" action="/Adserver.xhtml"/>
+                    </rich:panelMenuGroup>
+                </rich:panelMenu>
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>
