@@ -42,8 +42,8 @@
                             <h:outputLabel value="rp"/>
                         </td>
                         <td>
-                            <h:inputText id="rp" value="#{zeroClick.zeroClickBean.rp}"  validatorMessage="Please enter numeric input">
-                                <f:validateDoubleRange for="rp"/>
+                            <h:inputText id="rp" value="#{zeroClick.zeroClickBean.rp}"  converterMessage=" Please enter numeric input">
+                                <f:converter converterId="javax.faces.Double" for="rp"/>
                             </h:inputText>
                             <h:message style="color: red;" for="rp" ></h:message>
 
@@ -55,8 +55,8 @@
                         </td>
                         <td>
 
-                            <h:inputText id="rpm" value="#{zeroClick.zeroClickBean.rpm}" validatorMessage="Please enter numeric input">
-                                <f:validateDoubleRange for="rpm"/>
+                            <h:inputText id="rpm" value="#{zeroClick.zeroClickBean.rpm}" converterMessage=" Please enter numeric input">
+                                <f:converter converterId="javax.faces.Double" for="rpm"/>
                             </h:inputText>
 
                             <h:message style="color: red;" for="rpm" ></h:message>
@@ -67,8 +67,8 @@
                             <h:outputLabel value="rd"/>
                         </td>
                         <td>
-                            <h:inputText id="rd" value="#{zeroClick.zeroClickBean.rd}"  validatorMessage="Please enter numeric input">
-                                <f:validateDoubleRange for="rd"/>
+                            <h:inputText id="rd" value="#{zeroClick.zeroClickBean.rd}"  converterMessage=" Please enter numeric input" >
+                                <f:converter converterId="javax.faces.Double" for="rd"/>
                             </h:inputText>
                             <h:message style="color: red;" for="rd" ></h:message>
 

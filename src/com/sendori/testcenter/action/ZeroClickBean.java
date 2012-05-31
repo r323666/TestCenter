@@ -1,9 +1,5 @@
 package com.sendori.testcenter.action;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -106,13 +102,4 @@ public class ZeroClickBean {
         }
         return tempList;
     }
-
-    public void CsvSubmitValidation(FacesContext facesContext, UIComponent uiComponent, Object value) throws ValidatorException {
-        String csv = (String) value;
-
-        if (queryValue.equals("") && csv.equals("")) {
-            throw new ValidatorException(new FacesMessage("Please enter the Queries or Submit the list of Queries as csv file"));
-        }
-    }
-
 }
