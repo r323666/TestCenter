@@ -79,7 +79,6 @@ public class ZeroClickBean {
         this.queriesList = queriesList;
     }
 
-
     @Override
     public String toString() {
         return "ZeroClickBean{" +
